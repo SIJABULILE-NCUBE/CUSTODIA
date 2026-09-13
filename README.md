@@ -107,6 +107,10 @@ I am planning to deploy the frontend on Netlify or Vercel and the backend on Ren
 Railway, since both give a straightforward path for a small Node api. The environment
 variables above are exactly what each platform needs set in its dashboard.
 
+- Live frontend: https://frontend-9hkc9pgnk-smabhena-5612s-projects.vercel.app/
+- Live backend API: https://custodia-midk.onrender.com
+- Live Loom walkthrough: `TBD`
+
 ## Conclusion
 
 Custodia was built to have the scope of a real client engagement, not just one isolated
@@ -117,4 +121,4 @@ along the way: mismatched environment variable names, a leaked secret key caught
 own protections, an empty database with nothing to show until I seeded it, and the everyday
 friction of running two servers and a database together. None of that is in the code itself,
 but it is exactly the kind of debugging and ownership a real project asks for, and it is what
-this one gave me practice in.  
+this one gave me practice in. 
