@@ -3,6 +3,9 @@
 
 /** @type {import('tailwindcss').Config} */
 export default {
+  // i set this to class instead of the default media setting
+  // that way the toggle button controls dark mode directly, instead of only following the system setting
+  darkMode: 'class',
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
@@ -25,3 +28,4 @@ export default {
   },
   plugins: [],
 };
+

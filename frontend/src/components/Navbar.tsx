@@ -3,6 +3,7 @@
 
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import ThemeToggle from './ThemeToggle';
 
 export default function Navbar() {
   const { profile, logout } = useAuth();
@@ -58,6 +59,9 @@ export default function Navbar() {
               </Link>
             </>
           )}
+
+          {/* i put the toggle last, on the far right, since it is a settings style action rather than a navigation link */}
+          <ThemeToggle />
         </nav>
       </div>
     </header>
