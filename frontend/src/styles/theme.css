@@ -1,0 +1,31 @@
+/* this is my global stylesheet, tailwind handles most of the work */
+/* i only put things here that tailwind classes cannot easily express */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  color: #1A1A18;
+}
+
+/* i use this for my page titles, the warm serif is the one bold choice i am making across the whole site */
+.font-hero {
+  font-family: 'Fraunces', Georgia, serif;
+  font-optical-sizing: auto;
+}
+
+/* i respect people who have motion sickness or just prefer stillness, so i turn off my animations for them */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* a soft focus ring in gold instead of the browser default blue, so it still fits my colour scheme */
+:focus-visible {
+  outline: 2px solid #C9A227;
+  outline-offset: 2px;
+}
