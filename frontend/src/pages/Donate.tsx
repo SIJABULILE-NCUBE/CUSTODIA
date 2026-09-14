@@ -52,8 +52,8 @@ export default function Donate() {
 
   return (
     <div className="mx-auto max-w-lg px-6 py-16">
-      <h1 className="font-hero text-3xl text-charcoal">Support the food parcel drive</h1>
-      <p className="mt-2 text-sm text-charcoal/70">
+      <h1 className="font-hero text-3xl text-charcoal dark:text-cream">Support the food parcel drive</h1>
+      <p className="mt-2 text-sm text-charcoal/70 dark:text-cream/70">
         Give cash toward groceries or tell us what you are dropping off, no account needed.
       </p>
 
@@ -63,7 +63,7 @@ export default function Donate() {
           type="button"
           onClick={() => setType('money')}
           className={`flex-1 rounded-full py-2 text-sm font-medium ${
-            type === 'money' ? 'bg-gold text-ink' : 'border border-gold/40 text-charcoal'
+            type === 'money' ? 'bg-gold text-ink' : 'border border-gold/40 text-charcoal dark:text-cream'
           }`}
         >
           give cash
@@ -72,7 +72,7 @@ export default function Donate() {
           type="button"
           onClick={() => setType('food_parcel')}
           className={`flex-1 rounded-full py-2 text-sm font-medium ${
-            type === 'food_parcel' ? 'bg-gold text-ink' : 'border border-gold/40 text-charcoal'
+            type === 'food_parcel' ? 'bg-gold text-ink' : 'border border-gold/40 text-charcoal dark:text-cream'
           }`}
         >
           log a food parcel
@@ -81,29 +81,29 @@ export default function Donate() {
 
       <form onSubmit={handleSubmit} className="mt-8 space-y-5">
         <div>
-          <label className="block text-sm font-medium text-charcoal">Your name</label>
+          <label className="block text-sm font-medium text-charcoal dark:text-cream">Your name</label>
           <input
             type="text"
             required
             value={donorName}
             onChange={(e) => setDonorName(e.target.value)}
-            className="mt-1 w-full rounded-md border border-gold/40 bg-ivory px-4 py-2 focus:border-gold"
+            className="mt-1 w-full rounded-md border border-gold/40 bg-ivory dark:bg-charcoal/60 px-4 py-2 focus:border-gold"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-charcoal">Email (optional)</label>
+          <label className="block text-sm font-medium text-charcoal dark:text-cream">Email (optional)</label>
           <input
             type="email"
             value={donorEmail}
             onChange={(e) => setDonorEmail(e.target.value)}
-            className="mt-1 w-full rounded-md border border-gold/40 bg-ivory px-4 py-2 focus:border-gold"
+            className="mt-1 w-full rounded-md border border-gold/40 bg-ivory dark:bg-charcoal/60 px-4 py-2 focus:border-gold"
           />
         </div>
 
         {type === 'money' ? (
           <div>
-            <label className="block text-sm font-medium text-charcoal">Amount (ZAR)</label>
+            <label className="block text-sm font-medium text-charcoal dark:text-cream">Amount (ZAR)</label>
             <input
               type="number"
               required
@@ -111,24 +111,24 @@ export default function Donate() {
               step="0.01"
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
-              className="mt-1 w-full rounded-md border border-gold/40 bg-ivory px-4 py-2 focus:border-gold"
+              className="mt-1 w-full rounded-md border border-gold/40 bg-ivory dark:bg-charcoal/60 px-4 py-2 focus:border-gold"
             />
           </div>
         ) : (
           <div>
-            <label className="block text-sm font-medium text-charcoal">What are you dropping off</label>
+            <label className="block text-sm font-medium text-charcoal dark:text-cream">What are you dropping off</label>
             <textarea
               required
               value={itemDescription}
               onChange={(e) => setItemDescription(e.target.value)}
               rows={3}
               placeholder="e.g. 10kg maize meal, 4 tins of beans, cooking oil"
-              className="mt-1 w-full rounded-md border border-gold/40 bg-ivory px-4 py-2 focus:border-gold"
+              className="mt-1 w-full rounded-md border border-gold/40 bg-ivory dark:bg-charcoal/60 px-4 py-2 focus:border-gold"
             />
           </div>
         )}
 
-        {message && <p className="rounded-md bg-gold-light/30 px-4 py-2 text-sm text-charcoal">{message}</p>}
+        {message && <p className="rounded-md bg-gold-light/30 px-4 py-2 text-sm text-charcoal dark:text-cream">{message}</p>}
 
         <button
           type="submit"

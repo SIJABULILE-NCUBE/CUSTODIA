@@ -58,7 +58,7 @@ export default function Book() {
   if (!profile) {
     return (
       <div className="mx-auto max-w-md px-6 py-16 text-center">
-        <h1 className="font-hero text-2xl text-charcoal">Please log in to book a space</h1>
+        <h1 className="font-hero text-2xl text-charcoal dark:text-cream">Please log in to book a space</h1>
         <Link to="/login" className="mt-4 inline-block text-gold-dark hover:underline">
           go to login
         </Link>
@@ -68,17 +68,17 @@ export default function Book() {
 
   return (
     <div className="mx-auto max-w-lg px-6 py-16">
-      <h1 className="font-hero text-3xl text-charcoal">Book a space</h1>
-      <p className="mt-2 text-sm text-charcoal/70">Choose a room, gym slot or piece of equipment and a time.</p>
+      <h1 className="font-hero text-3xl text-charcoal dark:text-cream">Book a space</h1>
+      <p className="mt-2 text-sm text-charcoal/70 dark:text-cream/70">Choose a room, gym slot or piece of equipment and a time.</p>
 
       <form onSubmit={handleSubmit} className="mt-8 space-y-5">
         <div>
-          <label className="block text-sm font-medium text-charcoal">Facility</label>
+          <label className="block text-sm font-medium text-charcoal dark:text-cream">Facility</label>
           <select
             required
             value={facilityId}
             onChange={(e) => setFacilityId(e.target.value)}
-            className="mt-1 w-full rounded-md border border-gold/40 bg-ivory px-4 py-2 focus:border-gold"
+            className="mt-1 w-full rounded-md border border-gold/40 bg-ivory dark:bg-charcoal/60 px-4 py-2 focus:border-gold"
           >
             <option value="">choose a facility</option>
             {facilities.map((facility) => (
@@ -90,38 +90,38 @@ export default function Book() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-charcoal">Start time</label>
+          <label className="block text-sm font-medium text-charcoal dark:text-cream">Start time</label>
           <input
             type="datetime-local"
             required
             value={startTime}
             onChange={(e) => setStartTime(e.target.value)}
-            className="mt-1 w-full rounded-md border border-gold/40 bg-ivory px-4 py-2 focus:border-gold"
+            className="mt-1 w-full rounded-md border border-gold/40 bg-ivory dark:bg-charcoal/60 px-4 py-2 focus:border-gold"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-charcoal">End time</label>
+          <label className="block text-sm font-medium text-charcoal dark:text-cream">End time</label>
           <input
             type="datetime-local"
             required
             value={endTime}
             onChange={(e) => setEndTime(e.target.value)}
-            className="mt-1 w-full rounded-md border border-gold/40 bg-ivory px-4 py-2 focus:border-gold"
+            className="mt-1 w-full rounded-md border border-gold/40 bg-ivory dark:bg-charcoal/60 px-4 py-2 focus:border-gold"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-charcoal">Notes (optional)</label>
+          <label className="block text-sm font-medium text-charcoal dark:text-cream">Notes (optional)</label>
           <textarea
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
             rows={3}
-            className="mt-1 w-full rounded-md border border-gold/40 bg-ivory px-4 py-2 focus:border-gold"
+            className="mt-1 w-full rounded-md border border-gold/40 bg-ivory dark:bg-charcoal/60 px-4 py-2 focus:border-gold"
           />
         </div>
 
-        {message && <p className="rounded-md bg-gold-light/30 px-4 py-2 text-sm text-charcoal">{message}</p>}
+        {message && <p className="rounded-md bg-gold-light/30 px-4 py-2 text-sm text-charcoal dark:text-cream">{message}</p>}
 
         <button
           type="submit"

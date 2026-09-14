@@ -58,8 +58,8 @@ export default function AdminDashboard() {
 
   return (
     <div className="mx-auto max-w-4xl px-6 py-16">
-      <h1 className="font-hero text-3xl text-charcoal">Staff dashboard</h1>
-      <p className="mt-2 text-sm text-charcoal/70">A quick snapshot for your board and funders.</p>
+      <h1 className="font-hero text-3xl text-charcoal dark:text-cream">Staff dashboard</h1>
+      <p className="mt-2 text-sm text-charcoal/70 dark:text-cream/70">A quick snapshot for your board and funders.</p>
 
       {message && <p className="mt-4 rounded-md bg-red-50 px-4 py-2 text-sm text-red-700">{message}</p>}
 
@@ -77,21 +77,21 @@ export default function AdminDashboard() {
       )}
 
       <section className="mt-12">
-        <h2 className="font-hero text-xl text-charcoal">Bookings waiting on you</h2>
+        <h2 className="font-hero text-xl text-charcoal dark:text-cream">Bookings waiting on you</h2>
 
         {pendingBookings.length === 0 ? (
-          <p className="mt-3 text-sm text-charcoal/60">nothing waiting right now, nice and clear</p>
+          <p className="mt-3 text-sm text-charcoal/60 dark:text-cream/60">nothing waiting right now, nice and clear</p>
         ) : (
           <ul className="mt-4 space-y-3">
             {pendingBookings.map((booking) => (
-              <li key={booking.id} className="rounded-lg border border-gold/40 bg-ivory p-5">
+              <li key={booking.id} className="rounded-lg border border-gold/40 bg-ivory dark:bg-charcoal/60 p-5">
                 <div className="flex items-start justify-between gap-4">
                   <div>
-                    <p className="font-medium text-charcoal">{booking.facilities?.name}</p>
-                    <p className="text-sm text-charcoal/70">
+                    <p className="font-medium text-charcoal dark:text-cream">{booking.facilities?.name}</p>
+                    <p className="text-sm text-charcoal/70 dark:text-cream/70">
                       requested by {booking.profiles?.full_name} ({booking.profiles?.email})
                     </p>
-                    <p className="mt-1 text-xs text-charcoal/60">
+                    <p className="mt-1 text-xs text-charcoal/60 dark:text-cream/60">
                       {new Date(booking.start_time).toLocaleString()} to {new Date(booking.end_time).toLocaleString()}
                     </p>
                   </div>
@@ -105,7 +105,7 @@ export default function AdminDashboard() {
                     </button>
                     <button
                       onClick={() => handleDecision(booking.id, 'rejected')}
-                      className="rounded-full border border-charcoal/30 px-4 py-1.5 text-sm text-charcoal hover:bg-charcoal/5"
+                      className="rounded-full border border-charcoal/30 px-4 py-1.5 text-sm text-charcoal dark:text-cream hover:bg-charcoal/5"
                     >
                       reject
                     </button>

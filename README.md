@@ -289,7 +289,7 @@ https://custodia-midk.onrender.com/api/health
 
 **Live Loom walkthrough:**
 
-TBD
+https://www.loom.com/share/b4600191007e4da1bd014fb353504431
 
 ## Conclusion
 

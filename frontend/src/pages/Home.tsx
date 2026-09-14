@@ -29,9 +29,9 @@ export default function Home() {
       {/* i laid these three cards out to mirror the three services this platform actually combines */}
       <section className="mx-auto max-w-5xl px-6 py-20">
         <div className="grid gap-8 md:grid-cols-3">
-          <div className="rounded-lg border border-gold/40 bg-ivory p-8">
-            <h2 className="font-hero text-2xl text-charcoal">Youth programmes</h2>
-            <p className="mt-3 text-sm text-charcoal/80">
+          <div className="rounded-lg border border-gold/40 bg-ivory dark:bg-charcoal/60 p-8">
+            <h2 className="font-hero text-2xl text-charcoal dark:text-cream">Youth programmes</h2>
+            <p className="mt-3 text-sm text-charcoal/80 dark:text-cream/80">
               From after school coding to sports, browse what is running and enrol your spot in a few taps.
             </p>
             <Link to="/programmes" className="mt-4 inline-block text-gold-dark hover:underline">
@@ -39,9 +39,9 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="rounded-lg border border-gold/40 bg-ivory p-8">
-            <h2 className="font-hero text-2xl text-charcoal">Rooms and the gym</h2>
-            <p className="mt-3 text-sm text-charcoal/80">
+          <div className="rounded-lg border border-gold/40 bg-ivory dark:bg-charcoal/60 p-8">
+            <h2 className="font-hero text-2xl text-charcoal dark:text-cream">Rooms and the gym</h2>
+            <p className="mt-3 text-sm text-charcoal/80 dark:text-cream/80">
               Check what is free and request a time slot for a meeting room, event space, or a gym session.
             </p>
             <Link to="/book" className="mt-4 inline-block text-gold-dark hover:underline">
@@ -49,9 +49,9 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="rounded-lg border border-gold/40 bg-ivory p-8">
-            <h2 className="font-hero text-2xl text-charcoal">Food parcel drive</h2>
-            <p className="mt-3 text-sm text-charcoal/80">
+          <div className="rounded-lg border border-gold/40 bg-ivory dark:bg-charcoal/60 p-8">
+            <h2 className="font-hero text-2xl text-charcoal dark:text-cream">Food parcel drive</h2>
+            <p className="mt-3 text-sm text-charcoal/80 dark:text-cream/80">
               Give cash toward groceries or log items you are dropping off, no account needed if you prefer.
             </p>
             <Link to="/donate" className="mt-4 inline-block text-gold-dark hover:underline">

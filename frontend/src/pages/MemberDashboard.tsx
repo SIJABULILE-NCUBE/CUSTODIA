@@ -43,20 +43,20 @@ export default function MemberDashboard() {
 
   return (
     <div className="mx-auto max-w-3xl px-6 py-16">
-      <h1 className="font-hero text-3xl text-charcoal">Hello, {profile?.full_name}</h1>
-      <p className="mt-2 text-sm text-charcoal/70">Here is everything linked to your account.</p>
+      <h1 className="font-hero text-3xl text-charcoal dark:text-cream">Hello, {profile?.full_name}</h1>
+      <p className="mt-2 text-sm text-charcoal/70 dark:text-cream/70">Here is everything linked to your account.</p>
 
       <section className="mt-10">
-        <h2 className="font-hero text-xl text-charcoal">My programmes</h2>
+        <h2 className="font-hero text-xl text-charcoal dark:text-cream">My programmes</h2>
         {enrollments.length === 0 ? (
-          <p className="mt-2 text-sm text-charcoal/60">you have not enrolled in a programme yet</p>
+          <p className="mt-2 text-sm text-charcoal/60 dark:text-cream/60">you have not enrolled in a programme yet</p>
         ) : (
           <ul className="mt-3 space-y-2">
             {enrollments.map((enrollment) => (
-              <li key={enrollment.id} className="rounded-md border border-gold/30 bg-ivory px-4 py-3 text-sm">
+              <li key={enrollment.id} className="rounded-md border border-gold/30 bg-ivory dark:bg-charcoal/60 px-4 py-3 text-sm">
                 {enrollment.programmes?.name}
                 {enrollment.programmes?.schedule && (
-                  <span className="text-charcoal/60"> — {enrollment.programmes.schedule}</span>
+                  <span className="text-charcoal/60 dark:text-cream/60"> — {enrollment.programmes.schedule}</span>
                 )}
               </li>
             ))}
@@ -65,18 +65,18 @@ export default function MemberDashboard() {
       </section>
 
       <section className="mt-10">
-        <h2 className="font-hero text-xl text-charcoal">My bookings</h2>
+        <h2 className="font-hero text-xl text-charcoal dark:text-cream">My bookings</h2>
         {bookings.length === 0 ? (
-          <p className="mt-2 text-sm text-charcoal/60">you have not made a booking yet</p>
+          <p className="mt-2 text-sm text-charcoal/60 dark:text-cream/60">you have not made a booking yet</p>
         ) : (
           <ul className="mt-3 space-y-2">
             {bookings.map((booking) => (
-              <li key={booking.id} className="rounded-md border border-gold/30 bg-ivory px-4 py-3 text-sm">
+              <li key={booking.id} className="rounded-md border border-gold/30 bg-ivory dark:bg-charcoal/60 px-4 py-3 text-sm">
                 <div className="flex items-center justify-between">
                   <span>{booking.facilities?.name}</span>
                   <span className={statusStyle(booking.status)}>{booking.status}</span>
                 </div>
-                <p className="mt-1 text-xs text-charcoal/60">
+                <p className="mt-1 text-xs text-charcoal/60 dark:text-cream/60">
                   {new Date(booking.start_time).toLocaleString()} to {new Date(booking.end_time).toLocaleString()}
                 </p>
               </li>

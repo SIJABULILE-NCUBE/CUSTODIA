@@ -43,53 +43,53 @@ export default function Register() {
 
   return (
     <div className="mx-auto max-w-md px-6 py-16">
-      <h1 className="font-hero text-3xl text-charcoal">Join Riverside</h1>
-      <p className="mt-2 text-sm text-charcoal/70">
+      <h1 className="font-hero text-3xl text-charcoal dark:text-cream">Join Riverside</h1>
+      <p className="mt-2 text-sm text-charcoal/70 dark:text-cream/70">
         Create your membership account to book spaces and join programmes.
       </p>
 
       <form onSubmit={handleSubmit} className="mt-8 space-y-5">
         <div>
-          <label className="block text-sm font-medium text-charcoal">Full name</label>
+          <label className="block text-sm font-medium text-charcoal dark:text-cream">Full name</label>
           <input
             type="text"
             required
             value={fullName}
             onChange={(e) => setFullName(e.target.value)}
-            className="mt-1 w-full rounded-md border border-gold/40 bg-ivory px-4 py-2 focus:border-gold"
+            className="mt-1 w-full rounded-md border border-gold/40 bg-ivory dark:bg-charcoal/60 px-4 py-2 focus:border-gold"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-charcoal">Email</label>
+          <label className="block text-sm font-medium text-charcoal dark:text-cream">Email</label>
           <input
             type="email"
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="mt-1 w-full rounded-md border border-gold/40 bg-ivory px-4 py-2 focus:border-gold"
+            className="mt-1 w-full rounded-md border border-gold/40 bg-ivory dark:bg-charcoal/60 px-4 py-2 focus:border-gold"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-charcoal">Phone (optional)</label>
+          <label className="block text-sm font-medium text-charcoal dark:text-cream">Phone (optional)</label>
           <input
             type="tel"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
-            className="mt-1 w-full rounded-md border border-gold/40 bg-ivory px-4 py-2 focus:border-gold"
+            className="mt-1 w-full rounded-md border border-gold/40 bg-ivory dark:bg-charcoal/60 px-4 py-2 focus:border-gold"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-charcoal">Password</label>
+          <label className="block text-sm font-medium text-charcoal dark:text-cream">Password</label>
           <input
             type="password"
             required
             minLength={6}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="mt-1 w-full rounded-md border border-gold/40 bg-ivory px-4 py-2 focus:border-gold"
+            className="mt-1 w-full rounded-md border border-gold/40 bg-ivory dark:bg-charcoal/60 px-4 py-2 focus:border-gold"
           />
         </div>
 
@@ -105,7 +105,7 @@ export default function Register() {
         </button>
       </form>
 
-      <p className="mt-6 text-sm text-charcoal/70">
+      <p className="mt-6 text-sm text-charcoal/70 dark:text-cream/70">
         Already a member?{' '}
         <Link to="/login" className="text-gold-dark hover:underline">
           Log in here

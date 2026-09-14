@@ -44,22 +44,22 @@ export default function Programmes() {
 
   return (
     <div className="mx-auto max-w-4xl px-6 py-16">
-      <h1 className="font-hero text-3xl text-charcoal">Youth programmes</h1>
-      <p className="mt-2 text-sm text-charcoal/70">Everything running at Riverside this term.</p>
+      <h1 className="font-hero text-3xl text-charcoal dark:text-cream">Youth programmes</h1>
+      <p className="mt-2 text-sm text-charcoal/70 dark:text-cream/70">Everything running at Riverside this term.</p>
 
-      {message && <p className="mt-4 rounded-md bg-gold-light/30 px-4 py-2 text-sm text-charcoal">{message}</p>}
+      {message && <p className="mt-4 rounded-md bg-gold-light/30 px-4 py-2 text-sm text-charcoal dark:text-cream">{message}</p>}
 
       <div className="mt-8 space-y-4">
-        {programmes.length === 0 && <p className="text-charcoal/60">nothing is listed yet, please check back soon</p>}
+        {programmes.length === 0 && <p className="text-charcoal/60 dark:text-cream/60">nothing is listed yet, please check back soon</p>}
 
         {programmes.map((programme) => (
-          <div key={programme.id} className="rounded-lg border border-gold/40 bg-ivory p-6">
+          <div key={programme.id} className="rounded-lg border border-gold/40 bg-ivory dark:bg-charcoal/60 p-6">
             <div className="flex items-start justify-between gap-4">
               <div>
-                <h2 className="font-hero text-xl text-charcoal">{programme.name}</h2>
+                <h2 className="font-hero text-xl text-charcoal dark:text-cream">{programme.name}</h2>
                 {programme.schedule && <p className="mt-1 text-sm text-gold-dark">{programme.schedule}</p>}
-                {programme.description && <p className="mt-2 text-sm text-charcoal/80">{programme.description}</p>}
-                <p className="mt-2 text-xs text-charcoal/50">capacity: {programme.capacity} spots</p>
+                {programme.description && <p className="mt-2 text-sm text-charcoal/80 dark:text-cream/80">{programme.description}</p>}
+                <p className="mt-2 text-xs text-charcoal/50 dark:text-cream/50">capacity: {programme.capacity} spots</p>
               </div>
 
               {profile ? (
