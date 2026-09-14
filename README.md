@@ -1,59 +1,97 @@
 # Custodia
 
-I named this platform **Custodia**, from *custodian*, since that is really what it does: it looks after the things a community trusts it with, memberships, bookings, and donations, in one reliable place.
+**Community Membership, Bookings & Donations Platform**
 
-I built it for a fictional but realistic nonprofit client, **Riverside Community Hub**. They run youth programmes, a small gym, meeting and event rooms, and a food parcel donation drive. Before this, everything lived on paper and WhatsApp.
+I named this platform **Custodia**, from *custodian*, since that is really what it does: it looks after the things a community trusts it with, memberships, bookings and donations, in one reliable place.
 
-Custodia brings membership, bookings, and donations into one platform, with a public site for the community and a staff dashboard for the team running it.
+I built it for a fictional but realistic nonprofit client, **Riverside Community Hub**. They run youth programmes, a small gym, meeting and event rooms, and a food parcel donation drive. Before Custodia, everything lived on paper and WhatsApp.
+
+Custodia brings membership, bookings and donations into one platform, with a public site for the community and a staff dashboard for the team running it.
+
+---
 
 ## What This Covers
 
-* Public members can register, log in, browse programmes and enrol, book a room or the gym, and donate cash or log a food parcel drop-off. Donations do not require an account.
-* Staff with the `admin` role get a dashboard with funder-ready numbers and can approve or reject booking requests.
-* Row Level Security (RLS) in Supabase means the database itself enforces who can see what, rather than relying only on frontend code.
+### Members
 
-## The Admin Role
+Public members can:
 
-Every account starts as a plain `member` when it registers. There is no signup option for an admin, on purpose, since allowing users to choose an admin role would let anyone grant themselves full access.
+* Register and log in
+* Browse available programmes
+* Enrol in programmes
+* Book a room or gym facility
+* Donate cash
+* Log a food parcel drop-off
+* Make donations without needing an account
 
-Admin access has to be switched on manually, directly in the `profiles` table in Supabase.
+### Staff
 
-My own account (`s.mabhena@gmail.com`) is already set to `admin`, so I can see and use everything below without any extra setup.
+Staff users with the `admin` role get access to a dashboard with funder-ready numbers and can:
+
+* View total and active members
+* See programmes currently running
+* View pending and approved bookings
+* See food parcels logged
+* View total cash donations
+* See booking requests across all members
+* Approve or reject booking requests
+
+### Security
+
+Custodia uses **Supabase Row Level Security (RLS)** so that the database itself enforces who can see and modify what, rather than relying only on frontend code.
+
+---
+
+# The Admin Role
+
+Every account starts as a plain `member` when it registers.
+
+There is deliberately **no signup option for admin**. Allowing users to choose the admin role during registration would allow anyone to grant themselves full access.
+
+Admin access has to be switched on manually through the `profiles` table in Supabase.
+
+My own account is already set to admin, so I can see and use everything without any additional setup.
 
 ### What an Admin Can Do
 
-An admin can:
+An admin can do everything a regular member can, plus:
 
-* See the **Staff Dashboard** link in the navigation. This is hidden from regular members entirely, both in the UI and at the API level. The backend checks the user's role on every admin request, rather than relying only on the frontend.
-* View the funder-style report, including:
+* See the **Staff Dashboard** link in the navigation
+* Access the staff dashboard
+* View the funder-style report
+* See total and active members
+* See programmes currently running
+* View pending and approved bookings
+* See food parcels logged
+* See total cash donations
+* See every pending booking across all members, not just their own
+* Approve or reject booking requests
+* Create new programmes through the API
+* Create new facilities through the API
 
-  * Total and active members
-  * Programmes currently running
-  * Pending and approved bookings
-  * Food parcels logged
-  * Total cash donated
-* See every pending booking across all members, rather than only their own bookings.
-* Approve or reject pending bookings.
-* Create new programmes and facilities through the API.
+The Staff Dashboard link is hidden from regular members in the UI, but this is not being treated as the security layer. The backend also checks the user's role on every admin request.
 
-There is no admin form for creating programmes and facilities in the UI yet, so for now I add these directly in Supabase.
+This means a regular member cannot simply bypass the frontend and call the admin functionality directly.
 
 ### Promoting Another Account to Admin
 
-To promote another account to admin later, it is the same manual process:
+To promote another account to admin later:
 
-1. Open Supabase.
+1. Open the Supabase project.
 2. Go to **Table Editor**.
 3. Open the `profiles` table.
-4. Find the person's row.
+4. Find the person's profile row.
 5. Change `role` from `member` to `admin`.
-6. Save the change.
 
-That's it.
+The account will then have access to the staff functionality.
 
-## Stack
+> There is currently no admin form in the UI for creating programmes or facilities. The API functionality exists, but for now I add these directly through Supabase.
 
-### Frontend
+---
+
+# Tech Stack
+
+## Frontend
 
 * React
 * TypeScript
@@ -61,41 +99,60 @@ That's it.
 * Tailwind CSS
 * React Router
 
-### Backend
+## Backend
 
 * Node.js
 * Express
 * TypeScript
 
-### Database and Authentication
+## Database & Authentication
 
 * Supabase
 * PostgreSQL
 * Supabase Auth
-* Row Level Security (RLS)
+* Row Level Security
 
-## Colour Scheme
+---
 
-I chose **gold, black, cream, and ivory** because it feels warm and community-minded rather than corporate. This felt like a better fit for a nonprofit than a typical blue SaaS palette.
+# Colour Scheme
 
-**Fraunces** carries the headings to give the platform a bit of personality, while **Inter** handles the body text for readability.
+I chose **gold, black, cream and ivory** because it feels warm and community-minded rather than corporate.
 
-## Project Layout
+That felt more appropriate for a nonprofit community organisation than a typical blue SaaS palette.
+
+### Typography
+
+* **Fraunces** for headings, giving the interface some personality
+* **Inter** for body text, keeping the content clean and readable
+
+---
+
+# Project Layout
 
 ```text
 custodia/
-├── backend/       # My Express API, with one route file per feature area
-├── frontend/      # My React application
-└── supabase/      # schema.sql used to set up the database
+│
+├── backend/
+│   └── Express API
+│
+├── frontend/
+│   └── React application
+│
+└── supabase/
+    └── schema.sql
 ```
 
-## Getting This Running Locally
+The backend uses one route file per feature area.
 
-### 1. Create a Supabase Project
+The `supabase/schema.sql` file contains the database schema, Row Level Security policies and the trigger that automatically creates a profile when a user signs up.
+
+---
+
+# Getting This Running Locally
+
+## 1. Create a Supabase Project
 
 Create a new project on Supabase.
-
-### 2. Set Up the Database
 
 Open the **SQL Editor**, click **New query**, paste in the entire contents of:
 
@@ -103,9 +160,9 @@ Open the **SQL Editor**, click **New query**, paste in the entire contents of:
 supabase/schema.sql
 ```
 
-Then click **Run**.
+and click **Run**.
 
-This creates all six tables:
+This creates the six main tables:
 
 * `profiles`
 * `programmes`
@@ -114,39 +171,41 @@ This creates all six tables:
 * `bookings`
 * `donations`
 
-It also creates the Row Level Security policies and the database trigger that automatically creates a profile when a user signs up.
+It also creates the Row Level Security policies and the trigger that automatically creates a profile when a user signs up.
 
-### 3. Get the Supabase API Keys
+---
+
+# 2. Supabase API Keys
 
 Supabase now issues two types of API keys under:
 
 **Project Settings → API Keys**
 
-#### Publishable Key
+### Publishable Key
 
-The **publishable key** starts with:
+The publishable key starts with:
 
 ```text
 sb_publishable_...
 ```
 
-This is the modern name for what used to be called the `anon` key.
+This is the modern name for what was previously called the `anon` key and is safe to expose in browser code.
 
-It is safe to expose in browser-based frontend code when the database is correctly protected with Row Level Security.
+### Secret Key
 
-#### Secret Key
-
-The **secret key** starts with:
+The secret key starts with:
 
 ```text
 sb_secret_...
 ```
 
-This is the modern name for what used to be called the service role key.
+This is the modern name for what was previously called the service role key.
 
-It has full access and must **never** be placed in frontend code or committed to GitHub.
+It provides full access and must **never** be placed in frontend code or committed to Git.
 
-### 4. Configure the Backend
+---
+
+# 3. Backend Setup
 
 Inside the `backend` folder, copy:
 
@@ -160,9 +219,9 @@ to:
 .env
 ```
 
-> **Important:** The file must be `backend/.env`, not `backend/src/.env`. It needs to sit next to `package.json`.
+The file must be located directly inside the `backend` folder, next to `package.json`.
 
-Fill in the following:
+Add the following:
 
 ```env
 SUPABASE_URL=https://<project-ref>.supabase.co
@@ -170,7 +229,7 @@ SUPABASE_SERVICE_ROLE_KEY=your_secret_key
 SUPABASE_ANON_KEY=your_publishable_key
 ```
 
-`SUPABASE_URL` should be the actual project URL:
+`SUPABASE_URL` must be the actual Supabase project URL:
 
 ```text
 https://<project-ref>.supabase.co
@@ -178,16 +237,22 @@ https://<project-ref>.supabase.co
 
 It should **not** be the Supabase dashboard URL.
 
-Then run:
+Then, from inside the `backend` folder:
 
 ```bash
 npm install
 npm run dev
 ```
 
-Run these commands from inside the `backend` folder.
+The backend runs on:
 
-### 5. Configure the Frontend
+```text
+http://localhost:4000
+```
+
+---
+
+# 4. Frontend Setup
 
 Inside the `frontend` folder, copy:
 
@@ -201,7 +266,7 @@ to:
 .env
 ```
 
-Fill in:
+Add:
 
 ```env
 VITE_SUPABASE_URL=https://<project-ref>.supabase.co
@@ -209,96 +274,136 @@ VITE_SUPABASE_ANON_KEY=your_publishable_key
 VITE_API_URL=http://localhost:4000
 ```
 
-Then run:
+Then, from inside the `frontend` folder:
 
 ```bash
 npm install
 npm run dev
 ```
 
-Run these commands from inside the `frontend` folder.
+The frontend should be run in a **second terminal** so that the backend can continue running in the first terminal.
 
-The frontend should run in a **second terminal**, while the backend continues running in the first terminal.
+---
 
-### 6. Seed Starter Data
+# 5. Seed the Database
 
-The new database tables start empty.
+A new Supabase database starts empty.
 
-This means the **Book a Space** and **Programmes** pages will initially show nothing.
+This means the **Book a Space** and **Programmes** pages will initially show nothing until some starter data is added.
 
-To make the application usable, I need to add some starter facilities and programmes.
+I add a few facilities and programmes directly through the Supabase SQL Editor using `INSERT` statements.
 
-I can do this by running a quick `INSERT` query through the Supabase SQL Editor, in the same way that I ran `schema.sql`.
+The same SQL Editor used to run `schema.sql` can be used to seed the starter data.
 
-### 7. Admin Access
+---
 
-Registering through the website only ever creates a `member` account.
+# Authentication
 
-To get admin access, follow the process described in the **The Admin Role** section above.
+Registering through the website only ever creates a standard `member` account.
 
-## A Mistake Worth Flagging to Future Me
+There is no option for a user to register as an administrator.
 
-Early on, I accidentally committed my real `backend/.env`, which contained my live secret key, as well as my entire `backend/node_modules` folder to Git before `.gitignore` existed.
+To get admin access, the role must be changed manually in the Supabase `profiles` table.
+
+This is intentional because it prevents users from granting themselves administrative access.
+
+---
+
+# A Mistake Worth Flagging to Future Me
+
+Early in development, I accidentally committed my real `backend/.env` file, including my live secret key, and my entire `backend/node_modules` folder to Git before `.gitignore` existed.
 
 GitHub's push protection caught the secret and blocked the push before it went live.
 
-However, it meant I had to wipe my local Git history and start with a clean first commit once `.gitignore` was properly in place.
+However, it meant I had to wipe my local Git history and start again with a clean first commit once `.gitignore` was properly in place.
 
-### The Lesson
+The lesson was simple:
 
-Create `.gitignore` **before** the first:
+> **Create `.gitignore` before the first `git add .`, not after.**
 
-```bash
-git add .
-```
-
-and include at least:
+My `.gitignore` includes:
 
 ```text
-node_modules
-dist
+node_modules/
+dist/
 .env
 .env.local
 ```
 
-This is one of those mistakes that is easy to make when starting a project, but much easier to prevent when the ignore file is created first.
+This was a useful real-world lesson because security and repository hygiene need to be considered from the beginning of a project, rather than added afterwards.
 
-## Deployment Notes
+---
 
-I am planning to deploy the frontend on **Netlify or Vercel** and the backend on **Render or Railway**, since these provide a straightforward deployment path for a small Node.js API.
+# Test Credentials
 
-The environment variables described above are the values that need to be configured in the relevant deployment platform.
+For grading and demonstration purposes, there is a dedicated demo account that has already been promoted to the `admin` role.
 
-### Live Links
+This account is separate from my own personal account and was created specifically so the lecturer can test the staff functionality without having to register a new account or manually change the role.
 
-**Live frontend:**
+### Demo Admin Account
+
+```text
+Email: admin@outlook.com
+Password: admin@1212
+```
+
+This is a throwaway demo account created only for this project and does not belong to a real person's login.
+
+The account can be used to log in and test the **Staff Dashboard**, including the admin reporting and booking approval functionality.
+
+---
+
+# Deployment Notes
+
+The frontend is deployed separately from the backend.
+
+The environment variables described above are the variables required by the respective deployments.
+
+## Live Frontend
 
 https://frontend-black-seven-vnxlt5gu4i.vercel.app
 
-**Live backend API:**
+## Live Backend API
 
 https://custodia-midk.onrender.com
 
-Visiting the bare backend address shows a `404`, because the backend only serves `/api/...` routes and is not a webpage.
+Visiting the bare backend address will show a `404`.
 
-To confirm that the API is running, use:
+This is expected because the backend is an Express API and does not serve a webpage from the root URL.
 
-```text
+The health endpoint can be used to confirm that the backend is running:
+
 https://custodia-midk.onrender.com/api/health
-```
 
-**Live Loom walkthrough:**
+## Live Loom Walkthrough
 
 https://www.loom.com/share/b4600191007e4da1bd014fb353504431
 
-## Conclusion
+---
 
-Custodia was built to have the scope of a real client engagement rather than just one isolated feature.
+# Future Improvements
 
-Building it forced me to think about **database schema design, typed contracts between the frontend and backend, authentication, access control, and deployment** as parts of the same system rather than treating them as separate problems.
+If I were to continue developing Custodia beyond the current project scope, I would add:
 
-Getting the application running end to end also meant working through real problems along the way, including mismatched environment variable names, a leaked secret key caught by GitHub's own protections, an empty database with nothing to show until I seeded it, and the everyday friction of running two servers and a database together.
+* An admin interface for creating and editing programmes
+* An admin interface for creating and managing facilities
+* More detailed reporting and analytics
+* Email notifications for booking approvals and rejections
+* Booking availability and conflict detection
+* Pagination and filtering for the staff dashboard
+* Automated frontend and backend tests
+* Production-level monitoring and error logging
 
-None of that is visible directly in the final interface, but it is exactly the kind of debugging, problem-solving, and ownership that a real project requires.
+---
 
-**Custodia gave me practical experience in taking an application from an idea, through development and debugging, to a working end-to-end platform.**
+# Conclusion
+
+Custodia was built to have the scope of a real client engagement, rather than just one isolated feature.
+
+It forced me to think about schema design, authentication, access control, typed contracts between the frontend and backend, API development and deployment as parts of one system rather than treating each area in isolation.
+
+Getting it running end to end also meant working through real problems along the way: mismatched environment variable names, a leaked secret key caught by GitHub's own protections, an empty database with nothing to show until I seeded it, and the everyday friction of running two servers and a database together.
+
+None of that is necessarily visible in the finished interface, but it is exactly the kind of debugging, problem-solving and ownership that a real project requires.
+
+Most importantly, this project gave me practical experience taking an application from a client scenario and idea through **database design, full-stack development, authentication, security, API integration, deployment and a working end-to-end product**.
